@@ -1,5 +1,7 @@
+server:
+  port: 2018
 spring:
     security:
       user:
-        name: boot-server
+        name: boot-admin
         password: 123
