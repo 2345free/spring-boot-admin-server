@@ -1,7 +1,5 @@
 server:
   port: 2018
 spring:
-    security:
-      user:
-        name: boot-admin
-        password: 123
+    session:
+      timeout: 7200s
