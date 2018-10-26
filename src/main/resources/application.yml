@@ -4,5 +4,6 @@ spring:
     session:
       timeout: 7200s
 logging:
-  level: info
   path: logs/
+  level:
+    root: info
