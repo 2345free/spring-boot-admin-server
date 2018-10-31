@@ -25,15 +25,11 @@ bootJar {
     launchScript()
 }
 
-task unpack(type: Copy) {
-    dependsOn bootJar
-    from(zipTree(tasks.bootJar.outputs.files.singleFile))
-    into("build/dependency")
-}
 docker {
+    dependsOn bootJar
     name "${project.group}/${bootJar.baseName}"
-    copySpec.from(tasks.unpack.outputs).into("dependency")
-    buildArgs(['DEPENDENCY': "dependency"])
+    files bootJar.archivePath
+    buildArgs(['JAR_FILE': "${bootJar.archiveName}"])
 }
 
 dependencies {
