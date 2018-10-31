@@ -10,7 +10,7 @@ apply plugin: 'org.springframework.boot'
 apply plugin: 'io.spring.dependency-management'
 apply plugin: 'com.palantir.docker'
 
-group = 'cn.tendata'
+group = '2345free'
 archivesBaseName = 'sba'
 version = '1.0.0'
 sourceCompatibility = 1.8
