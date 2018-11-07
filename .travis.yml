@@ -2,10 +2,12 @@ language: java
 jdk:
   - oraclejdk8
   - openjdk8
+install: true
+before_script:
+  - chmod +x gradlew
+script: ./gradlew clean build
 sudo: false
 addons:
   apt:
     packages:
       - oracle-java8-installer
-before_script:
-  - chmod +x gradlew
