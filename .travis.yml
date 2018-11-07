@@ -7,3 +7,5 @@ addons:
   apt:
     packages:
       - oracle-java8-installer
+before_script:
+  - chmod +x gradlew
