@@ -3,6 +3,11 @@ server:
 spring:
     session:
       timeout: 7200s
+    main:
+      banner-mode: console
+    banner:
+      image:
+        location: classpath:static/banner/loading2.gif
 logging:
   path: logs/
   level:
