@@ -9,6 +9,7 @@ apply plugin: 'idea'
 apply plugin: 'org.springframework.boot'
 apply plugin: 'io.spring.dependency-management'
 apply plugin: 'com.palantir.docker'
+apply plugin: 'jacoco'
 
 group = '2345free'
 archivesBaseName = 'sba'
@@ -50,4 +51,25 @@ dependencyManagement {
         mavenBom "org.springframework.cloud:spring-cloud-dependencies:$springCloudVersion"
         mavenBom "de.codecentric:spring-boot-admin-dependencies:$springBootAdminVersion"
     }
+}
+
+test.useJUnit()
+
+task codeCoverageReport(type: JacocoReport) {
+    executionData fileTree(project.rootDir.absolutePath).include("**/build/jacoco/*.exec")
+
+    allprojects.each {
+        sourceSets it.sourceSets.main
+    }
+
+    reports {
+        xml.enabled = true
+        xml.destination file("${buildDir}/reports/jacoco/report.xml")
+        html.enabled = false
+        csv.enabled = false
+    }
+}
+
+build.dependsOn codeCoverageReport {
+    subprojects*.test
 }
